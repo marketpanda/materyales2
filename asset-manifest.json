@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/materyales2/static/css/main.6f5a5962.css",
+    "main.js": "/materyales2/static/js/main.cbf75fbb.js",
+    "static/media/icon_cocolumber2x4.JPG": "/materyales2/static/media/icon_cocolumber2x4.7d4e1826de0f27798afa.JPG",
+    "static/media/icon_gravel.JPG": "/materyales2/static/media/icon_gravel.c651f145d9e284d3d5a9.JPG",
+    "static/media/icon_cement.JPG": "/materyales2/static/media/icon_cement.c887ee9716a8dc8dba54.JPG",
+    "static/media/icon_tiewire.JPG": "/materyales2/static/media/icon_tiewire.9cf8454ff7d0babf9eff.JPG",
+    "static/media/icon_10mm.JPG": "/materyales2/static/media/icon_10mm.5e7b0b509bbcd7033b9d.JPG",
+    "static/media/icon_phenolic.JPG": "/materyales2/static/media/icon_phenolic.2f4e579168ebf8793595.JPG",
+    "static/media/icon_sand.JPG": "/materyales2/static/media/icon_sand.55536c1bafed28933bcd.JPG",
+    "index.html": "/materyales2/index.html",
+    "main.6f5a5962.css.map": "/materyales2/static/css/main.6f5a5962.css.map",
+    "main.cbf75fbb.js.map": "/materyales2/static/js/main.cbf75fbb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f5a5962.css",
+    "static/js/main.cbf75fbb.js"
+  ]
+}
