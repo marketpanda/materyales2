@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import * as computeSSlab from '../computations/ComputeSuspendedSlab'
+import Render, {EstimateTables, EnumerateTotals } from '../Render'
  
   
 const SuspendedSlab = () => {
   const [length, setLength] = useState('')
   const [width, setWidth] = useState('')
   const [area, setArea] = useState('')
-  const [message, setMessage] = useState('Console here')
+ 
   
   
   const showLength = (e) => {
@@ -45,7 +46,6 @@ const SuspendedSlab = () => {
     } else {
       trueArea = width*length
     }
-    // setNumPhenolic(countPhenolic)
     return trueArea
   }
 
@@ -93,16 +93,7 @@ const SuspendedSlab = () => {
   
   } = countSuspendedSlabDetails()
 
-  
-
-  //map every detail of computation for suspended slab
-  var valuesSuspendedSlab = countSuspendedSlabDetails()
-  
- 
-  // <li>15 pcs of 6-linear meter of 2x2 support joist</li>
-  // <li>15 pcs of 6-linear meter 2x3 cocolumber</li>
-  // <li>8 kg of tie wire, #16</li>
- 
+   
 
   const runSSlab = {
     array: [
@@ -111,7 +102,7 @@ const SuspendedSlab = () => {
         name: 'phenolic',
         quantity: objPhenolic,
         units: 'pcs of phenolic',
-        pic: 'icon_phenolic.JPG',
+        pic: 'icon_phenolic.jpg',
         trendingPrice: '800',
         totalPrice:''
       },
@@ -120,7 +111,7 @@ const SuspendedSlab = () => {
         name: 'cement',
         quantity: objCement,
         units: 'bags of cement',
-        pic: 'icon_cement.JPG',
+        pic: 'icon_cement.jpg',
         trendingPrice: '250',
         totalPrice:''
       },
@@ -129,7 +120,7 @@ const SuspendedSlab = () => {
         name: 'sand',
         quantity: objSand,
         units: 'cubic meter of sand',
-        pic: 'icon_sand.JPG',
+        pic: 'icon_sand.jpg',
         trendingPrice: '1500',
         totalPrice:''
       },
@@ -138,7 +129,7 @@ const SuspendedSlab = () => {
         name: 'gravel',
         quantity: objGravel,
         units: 'cubic meter of gravel',
-        pic: 'icon_gravel.JPG',
+        pic: 'icon_gravel.jpg',
         trendingPrice: '1500',
         totalPrice:''
       },
@@ -147,7 +138,7 @@ const SuspendedSlab = () => {
         name: 'rebar 10mm',
         quantity: objTenMm,
         units: 'pcs of 6-m length 10mm',
-        pic: 'icon_10mm.JPG',
+        pic: 'icon_10mm.jpg',
         trendingPrice: '170',
         totalPrice:''
       },
@@ -156,7 +147,7 @@ const SuspendedSlab = () => {
         name: 'formworks2x4',
         quantity: objCocolumber2x4,
         units: 'pcs of 6-m 2x4 cocolumber',
-        pic: 'icon_cocolumber2x4.JPG',
+        pic: 'icon_cocolumber2x4.jpg',
         trendingPrice: '120',
         totalPrice:'' 
       },
@@ -165,29 +156,28 @@ const SuspendedSlab = () => {
         name: 'tiewire',
         quantity: objTieWire,
         units: 'kg of tiewire',
-        pic: 'icon_tiewire.JPG',
+        pic: 'icon_tiewire.jpg',
         trendingPrice: '75',
         totalPrice:''
       }
 
     ]
   }
-
-   
+ 
 
   const costings = () => {
-    var materialsCost = 0
-    var factorLabor = 0.3
-    var VAT = 0.12
-    var contingency = 0.05
-    var contractorsProfit = .15
+    let materialsCost = 0
+    let factorLabor = 0.3
+    let VAT = 0.12
+    let contingency = 0.05
+    let contractorsProfit = .15
 
 
     runSSlab.array.map(item => (
       materialsCost = materialsCost + (item.quantity*item.trendingPrice)
     )) 
 
-    var particulars = {
+    let particulars = {
       matCost: materialsCost,
       totalLabor: materialsCost * factorLabor,
       vatFromMaterials: materialsCost * VAT,
@@ -236,8 +226,9 @@ return (
       {/* Cost Per Square Meter:
       <input type='number' placeholder={costPerSquareMeter} onChange={showCostPerSquareMeter} value={costPerSquareMeter} /> */}
       <div className="enumerateMat">
-            <div className='header'>Quantity</div>
             <div className='header'>&nbsp;</div>
+            <div className='header'><span >Quantity</span></div>
+            
             <div className='header'>Units</div>
             <div className='header'>Trending Price</div>
             <div className='header'>Total Price</div>
@@ -245,8 +236,7 @@ return (
           {
             runSSlab.array.map(item => (
               <>
-              <div className='cell'>{item.quantity}</div>
- 
+              
               <div className='cell'>
                 
                 <span className='icons'>
@@ -255,6 +245,7 @@ return (
                 </span>
                 
               </div>
+              <div className='cell'>{item.quantity}</div>
 
               <div className='cell'>{item.units}</div>
               <div className='cell'>
@@ -269,44 +260,36 @@ return (
          
       </div>
               
-      {/* <div className='enumerateMat'>
-              
-        {/* <ul>
-          <li>109 pcs of 6-m length 10mm deformed rebars</li>
-          <li>{objPhenolic} pcs of phenolic board 1/2"</li>
-          <li>{objCement} bags of Cement</li>
-          <li>{objSand} cubic meters of Sand</li>
-          <li>{objGravel} cubic meters of Gravel</li>
-          <li>15 pcs of 6-linear meter of 2x2 support joist</li>
-          <li>15 pcs of 6-linear meter 2x3 cocolumber</li>
-          <li>8 kg of tie wire, #16</li>
-        </ul> 
-
-      </div>*/}
-        
-      
+          
       </div>
       <div className='rowHandler'>
         Total Materials Cost:
-        <div>{matCost.toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
+        <div>
+          <span style={{fontWeight:700}}>
+          {matCost.toLocaleString(undefined, {minimumFractionDigits: 2})}
+          </span>
+        </div>
       </div>
 
-      <div className='rowHandler'>
-        Materials Contingency:
+      <div className='rowHandler2'>
+        <div><input type='checkbox' id='mat' className='test2' style={{marginRight
+        : '10px'}} />
+        <label for='mat'>Materials Contingency:</label>
+        </div>
         <div>{materialsContingency.toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
       </div>
 
-      <div className='rowHandler'>
+      <div className='rowHandler2'>
         Labor Cost:
         <div>{totalLabor.toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
       </div>
 
-      <div className='rowHandler'>
+      <div className='rowHandler2'>
         Contractor's Profit:
         <div>{contractorsProfit.toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
       </div>
 
-      <div className='rowHandler'>
+      <div className='rowHandler2'>
       12% VAT
         <div>{vatFromMaterials.toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
       </div>
@@ -314,11 +297,13 @@ return (
       <div className='rowHandler'>
       Total Project Cost:
         <div>
-          { 
-            
-          'Php' + projectCost().toLocaleString(undefined, {minimumFractionDigits: 2})
- 
-          } 
+          <span style={{fontWeight:700}}>
+            { 
+              
+            'Php' + projectCost().toLocaleString(undefined, {minimumFractionDigits: 2})
+  
+            } 
+          </span>
         </div>
       </div>
 

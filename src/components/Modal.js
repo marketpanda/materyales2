@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+import '../fontawesome.css'
 
 const MODAL_STYLES = {
+  borderRadius: '5px',
   position: 'fixed',
   top: '50%',
   left: '50%',
@@ -24,11 +26,13 @@ const Modal = ({open, children, onClose}) => {
   if (!open) return null
   return (
     <>
-      <div style={OVERLAY_STYLES} />
+      <div onClick={onClose}  style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
       
         {children}
-        <button onClick={onClose}>Close</button>
+        <button onClick={onClose} style={{position:'absolute', top:'20px', right:'20px', border: '0', background:'none', color:'gray'}}>
+          <i className="fas fa-window-close"></i>
+        </button>
       </div>
     </>
   )

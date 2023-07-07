@@ -44,12 +44,12 @@ export const countTenMm = (e, f, g) => {
 export const countCocolumber2x4 = (e) => {
 
   //20m of 2x4 / sqm
-  return (e * 20) / 6
+  return ((e * 20) / 6).toFixed(2)
 }
 
 export const countTieWire = (e) => {
   //.006kg per sqm
-  return (e * .006)
+  return (e * .006).toFixed(2)
 }
 
  

@@ -1,0 +1,13 @@
+.offscreen {
+    position: absolute;
+    left: -9999px;
+
+}
+
+.errmsg {
+    background-color: lightcoral;
+    color: firebrick;
+    font-weight: 700;
+    padding: 0.5 rem;
+    margin-bottom: 0.5 rem;
+}

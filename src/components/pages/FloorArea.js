@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import Axios from 'axios'
+ 
 
 const FloorArea = () => {
   const [length, setLength] = useState('')
@@ -53,6 +55,22 @@ const FloorArea = () => {
     // var converted = s.stringToLocale('en-US')
     return s.toLocaleString('en-US')
   }
+
+  const axiosRequest = require('axios')
+
+  const getActivity = async () => {
+ 
+    try {
+      let response = await Axios.get('https://www.boredapi.com/api/activity')
+      console.log(`You could ${response.data.activity}`) 
+    } catch (error) {
+      console.error(`ERROR ${error}`)
+    }
+      
+  }
+  
+  getActivity()
+  
   
 return (
     <div className='app'>
